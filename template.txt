@@ -1,0 +1,6 @@
+26~47
+Author~Lucas Alexander Ethington
+Date started (yyyy/mm/dd)~2023/01/22
+Last edited (yyyy/mm/dd)~2023/01/23
+Purpose~The third version of my header generator, this time largely based on my tableTools.cpp file. It generates a table, which is then slightly changed into a valid cpp header
+Filename~3_0-headerGenerator.cpp
