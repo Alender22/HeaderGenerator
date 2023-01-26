@@ -30,6 +30,12 @@ void clearTerminal();
 
 int main(int argC, char** args)
 {
+    if(argC == 1)
+    {
+        cout << "No arguments were passed, one was expected" << endl;
+        return -1;
+    }
+
     Header header;
     string filename = args[1];
 
@@ -43,6 +49,8 @@ int main(int argC, char** args)
     clearTerminal();
 
     cout << header.makeHeader();
+
+    return 0;
 }
 
 void Header::readTableFromTemplate(string templateLocation)
