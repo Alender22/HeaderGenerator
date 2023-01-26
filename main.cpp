@@ -1,6 +1,7 @@
 #include <iostream>
 #include "headerTools.h"
 #include "terminalTools.h"
+#include "cppFormatTools.h"
 
 using namespace std;
 
@@ -23,7 +24,11 @@ int main(int argC, char** args)
 
     clearTerminal();
 
-    cout << header.makeHeader();
+    string headerStr = header.makeHeader();
+
+    cout << headerStr;
+
+    formatCPPFile(filename, headerStr);
 
     return 0;
 }
