@@ -1,7 +1,6 @@
 16~57
-Programmer~Lucas Alexander Ethington
-Student ID~12599576
-Section~308
+Programmer~Alender22
 Date(yyyy/mm/dd)~#getSysDate
 File~#var-FILENAME
 Purpose~#userinput
+Small Change~I am making this small change, to see if I have properly authorized my pc
