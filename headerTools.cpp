@@ -1,57 +1,12 @@
 #include <iostream>
+#include <vector>
 #include "tableTools.h"
 #include "fileTools.h"
 #include "timeTools.h"
 #include "terminalTools.h"
+#include "headerTools.h"
 
 using namespace std;
-
-class Header
-{
-private:
-    Table header;
-    vector<vector<string>> varDict;
-
-public:
-    void readTableFromTemplate(string templateLocation = "template.txt");
-
-    void addVarToDict(string varName, string varCont);
-
-    void handleFlagCommands();
-
-    void checkFlag(string potFlag, int i, int j);
-
-    string makeHeader();
-
-    string getVarContFromName(string varName);
-};
-
-void clearTerminal();
-
-int main(int argC, char** args)
-{
-    if(argC == 1)
-    {
-        cout << "No arguments were passed, one was expected" << endl;
-        return -1;
-    }
-
-    Header header;
-    string filename = args[1];
-
-    header.addVarToDict("FILENAME", filename);
-
-    header.readTableFromTemplate();
-
-    header.handleFlagCommands();
-
-    makeSpace(100);
-    clearTerminal();
-
-    cout << header.makeHeader();
-
-    return 0;
-}
 
 void Header::readTableFromTemplate(string templateLocation)
 {
