@@ -11,3 +11,7 @@ string padRight(string toPad, char padChar, int tarSize);
 string padLeft(string toPad, char padChar, int tarSize);
 string padCenter(string toPad, char padChar, int tarSize);
 string charToStr(char cha);
+string replaceCharWithString(string original, char tarChar, string tarSubStr);
+string replaceSubStringWithString(string original, string signalString, string tarSubStr);
+string removeCharFromString(string original, char toRemove);
+bool substringIn(string original, string sub);
