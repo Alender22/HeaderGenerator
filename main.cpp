@@ -9,7 +9,18 @@ int doFileFormatting(int argC, char** args);
 
 int main(int argC, char** args)
 {
-    return doFileFormatting(argC, args);
+    string origin = "Tools\t\t\tI am going through my stringTools file,\tmaking sure none of my foundational_functions have bugs Tools";
+    vector<string> tokens = splitStringAt(origin, "Tools");    
+    string rp = replaceSubStringWithString(origin, "Tools", "Functions");
+
+    for(int i = 0; i < tokens.size(); i++)
+    {
+        cout << "|" << tokens[i] << "|" << endl;
+    }
+
+    cout << rp << endl;
+
+    //return doFileFormatting(argC, args);
 }
 
 int doFileFormatting(int argC, char** args)

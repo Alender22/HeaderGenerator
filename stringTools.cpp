@@ -12,29 +12,47 @@ vector<string> splitStringAt(string toSplit, string splitAt)
 
     while(toSplit.substr(0, splitAt.length()) == splitAt)
     {
-        toSplit.erase(toSplit.begin(), toSplit.begin() + splitAt.length());
+        cout << "Before: " << toSplit << endl;
+        cout << "|" << toSplit.substr(0, splitAt.length()) << "|" << splitAt << "|" << endl;
+        //toSplit.erase(toSplit.begin(), toSplit.begin() + splitAt.length());
+        toSplit = toSplit.substr(splitAt.length());
+        cout << "After: " << toSplit << endl;
 
         if(toSplit == splitAt)
         {   
-            tokens.push_back("");
+            tokens.insert(tokens.begin(), (""));
             return tokens;
         }
+
+        cout << " ++ " << endl;
+        tokens.insert(tokens.begin(), "");
+        cout << "After2: " << toSplit << endl;
+
+        if(toSplit.substr(0, splitAt.length()) != splitAt)
+            break;
     }
 
     while(toSplit.substr(toSplit.length() - splitAt.length(), splitAt.length()) == splitAt)
-        toSplit.erase(toSplit.end() - splitAt.length(), toSplit.end() );
-
-    for(int i = 0; i < toSplit.length() - splitAt.length() + 1; i++)
     {
+        toSplit.erase(toSplit.end() - splitAt.length(), toSplit.end() );
+        tokens.push_back("");
+    }
 
-        if(toSplit.substr(i, splitAt.length()) == splitAt && i != 0)
+    for(int i = 0; i < toSplit.length() - splitAt.length(); i++)
+    {
+        if(toSplit.length() >= splitAt.length())
         {
-            token = toSplit.substr(0, i);
-            tokens.push_back(token);
+            if(toSplit.substr(i, splitAt.length()) == splitAt && i != 0)
+            {
+                token = toSplit.substr(0, i);
+                tokens.push_back(token);
 
-            toSplit = toSplit.substr(i + splitAt.length());
-            i = 0;
+                toSplit = toSplit.substr(i + splitAt.length());
+                i = 0;
+            }
         }
+        else
+            break;
     }
 
     if(toSplit != "")
@@ -56,6 +74,15 @@ vector<string> maxLineLength(string toBreak, char splitAt, int lineLength)
 
     for(int i = 0; i < tokens.size(); i++)
     {
+        if(tokens[i].length() > lineLength)
+        {
+            string tmp = tokens[i].substr(0, lineLength - part.length());
+            string rest = tokens[i].substr(lineLength - part.length());
+
+            tokens[i] = tmp;
+            tokens.insert(tokens.begin() + i + 1, rest);
+        }
+
         if(part.length() + tokens[i].length() <= lineLength)
         {
             part += tokens[i];
@@ -89,6 +116,9 @@ string padString(string toPad, char padChar, int tarSize, bool padRight)
         cout << "TarSize for padding strings must be greator 0." << endl;
         return toPad;
     }
+    if(tarSize < toPad.length())
+        cout << "tarSize given is smaller than string length. Doing nothing. " << endl;
+
     while(toPad.length() < tarSize)
     {
         if(padRight)
@@ -123,45 +153,21 @@ string charToStr(char cha)
 
 string replaceCharWithString(string original, char tarChar, string tarSubStr)
 {
-    string convertedString = "";
-    for(int i = 0; i < original.length(); i++)
-    {
-        if(original[i] == tarChar)
-        {
-            convertedString += tarSubStr;
-        }
-        else
-        {
-            convertedString += original[i];
-        }
-    }
-    return convertedString;
+    return replaceSubStringWithString(original, charToStr(tarChar), tarSubStr);
 }
 
 string replaceSubStringWithString(string original, string signalString, string tarSubStr)
 {
     string formattedString = "";
+    vector<string> tokens = splitStringAt(original, signalString);
 
-    if(original.length() >= signalString.length())
+    for(int i = 0; i < tokens.size(); i++)
     {
-        for(int i = 0; original.length() >= signalString.length() + i; i++)
-        {
-            if(original.substr(i, signalString.length()) == signalString)
-            {
-                formattedString += tarSubStr;
-                i += signalString.length() - 1;
-            }
-            else
-            {
-                if(i < original.length() - signalString.length() - 1)
-                    formattedString += original[i];
-            }
-            if(i == original.length() - signalString.length())
-                formattedString += original.substr(i - 1, signalString.length() + 1);
-        }
+        formattedString += tokens[i];
+
+        if(i < tokens.size() - 1)
+            formattedString += tarSubStr;
     }
-    else
-        return original;
 
     return formattedString;
 }
