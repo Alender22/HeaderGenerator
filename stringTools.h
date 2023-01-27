@@ -4,6 +4,7 @@
 
 using namespace std;
 
+vector<string> splitStringAt(string toSplit, string splitAt);
 vector<string> splitStringAt(string toSplit, char splitAt);
 vector<string> maxLineLength(string toBreak, char splitAt, int lineLength);
 string padString(string toPad, char padChar, int tarSize, bool padRight);

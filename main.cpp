@@ -1,41 +1,18 @@
 #include <iostream>
-#include "headerTools.h"
-#include "terminalTools.h"
-#include "cppFormatTools.h"
+#include "stringTools.h"
 
 using namespace std;
 
 int main(int argC, char** args)
 {
-    Header header;
-    string srcFilename, destFilename;
+    string test = "Now it's time to test splitting at a single charachter, which should also work.";
+    string split = " ";
 
-    if(argC == 1)
-    {
-        cout << "No arguments were passed, one was expected" << endl;
-        return -1;
-    }
+    vector<string> tokens = splitStringAt(test, split);
 
-    srcFilename = args[1];
+    for(int i = 0; i < 5; i++)
+        cout << endl;
 
-    if(argC == 2)
-        destFilename = srcFilename;
-    else
-        destFilename = args[2];
-
-    header.addVarToDict("FILENAME", srcFilename);
-
-    header.readTableFromTemplate();
-
-    header.handleFlagCommands();
-
-    clearTerminal();
-
-    string headerStr = header.makeHeader();
-
-    cout << headerStr;
-
-    formatCPPFile(srcFilename, destFilename, headerStr);
-
-    return 0;
+    for(int i = 0; i < tokens.size(); i++)
+        cout << tokens[i] << endl;
 }
