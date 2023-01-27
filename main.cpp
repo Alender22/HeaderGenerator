@@ -7,16 +7,23 @@ using namespace std;
 
 int main(int argC, char** args)
 {
+    Header header;
+    string srcFilename, destFilename;
+
     if(argC == 1)
     {
         cout << "No arguments were passed, one was expected" << endl;
         return -1;
     }
 
-    Header header;
-    string filename = args[1];
+    srcFilename = args[1];
 
-    header.addVarToDict("FILENAME", filename);
+    if(argC == 2)
+        destFilename = srcFilename;
+    else
+        destFilename = args[2];
+
+    header.addVarToDict("FILENAME", srcFilename);
 
     header.readTableFromTemplate();
 
@@ -28,7 +35,7 @@ int main(int argC, char** args)
 
     cout << headerStr;
 
-    formatCPPFile(filename, args[2], headerStr);
+    formatCPPFile(srcFilename, destFilename, headerStr);
 
     return 0;
 }
