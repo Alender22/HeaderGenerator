@@ -5,8 +5,8 @@ using namespace std;
 
 int main(int argC, char** args)
 {
-    string test = "Now it's time to test splitting at a single charachter, which should also work.";
-    string split = " ";
+    string test = "testtesttesttestd";
+    string split = "test";
 
     vector<string> tokens = splitStringAt(test, split);
 
@@ -14,5 +14,5 @@ int main(int argC, char** args)
         cout << endl;
 
     for(int i = 0; i < tokens.size(); i++)
-        cout << tokens[i] << endl;
+        cout << "Main: " << "|" << tokens[i] << "|" << endl;
 }

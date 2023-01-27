@@ -10,38 +10,28 @@ vector<string> splitStringAt(string toSplit, string splitAt)
     vector<string> tokens;
     string token = "";
 
-    while(toSplit.substr(0, splitAt.length()) == splitAt)
-    {
-        toSplit.erase(toSplit.begin(), toSplit.begin() + splitAt.length());
-
-        if(toSplit == splitAt)
-        {   
-            tokens.push_back("");
-            return tokens;
-        }
-    }
-
-    while(toSplit.substr(toSplit.length() - splitAt.length(), splitAt.length()) == splitAt)
-        toSplit.erase(toSplit.end() - splitAt.length(), toSplit.end() );
-
-    cout << "|" << toSplit << "|" << endl;
-
     for(int i = 0; i < toSplit.length() - splitAt.length() + 1; i++)
     {
-        cout << "Comparing:  " << toSplit.substr(i, splitAt.length()) << "  ===  " << splitAt << endl;
 
-        if(toSplit.substr(i, splitAt.length()) == splitAt && i != 0)
+        if(toSplit.substr(i, splitAt.length()) != splitAt)
         {
-            token = toSplit.substr(0, i);
+            token += toSplit[i];
+        }
+        else
+        {
             tokens.push_back(token);
+            token = "";
+            i += splitAt.length() - 1;
+        }
 
-            toSplit = toSplit.substr(i + splitAt.length());
-            i = 0;
+        if(i >= toSplit.length() - splitAt.length() - 1 )
+        {
+            if(toSplit.substr(toSplit.length() - splitAt.length()) != splitAt)
+                token += toSplit.substr(i + 1);
         }
     }
-
-    if(toSplit != "")
-        tokens.push_back(toSplit);
+    
+    tokens.push_back(token);
 
     return tokens;
 }
