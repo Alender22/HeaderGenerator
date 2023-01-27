@@ -24,10 +24,13 @@ vector<string> splitStringAt(string toSplit, string splitAt)
             i += splitAt.length() - 1;
         }
 
-        if(i >= toSplit.length() - splitAt.length() - 1 )
+        if(i >= toSplit.length() - splitAt.length() - 1)
         {
             if(toSplit.substr(toSplit.length() - splitAt.length()) != splitAt)
+            {
                 token += toSplit.substr(i + 1);
+                break;
+            }
         }
     }
     
