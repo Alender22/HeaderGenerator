@@ -24,8 +24,6 @@ vector<string> splitStringAt(string toSplit, string splitAt)
     while(toSplit.substr(toSplit.length() - splitAt.length(), splitAt.length()) == splitAt)
         toSplit.erase(toSplit.end() - splitAt.length(), toSplit.end() );
 
-    cout << "|" << toSplit << "|" << endl;
-
     for(int i = 0; i < toSplit.length() - splitAt.length() + 1; i++)
     {
         cout << "Comparing:  " << toSplit.substr(i, splitAt.length()) << "  ===  " << splitAt << endl;
