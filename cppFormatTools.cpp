@@ -7,9 +7,9 @@
 
 using namespace std;
 
-void formatCPPFile(string filename, string headerStr)
+void formatCPPFile(string srcFilename, string destFileName, string headerStr)
 {
-    vector<string> fileLines = readFileLineByLine(filename);
+    vector<string> fileLines = readFileLineByLine(srcFilename);
     headerStr += '\n';
 
     editIndentation(fileLines);
@@ -19,7 +19,7 @@ void formatCPPFile(string filename, string headerStr)
         headerStr += fileLines[i] + '\n';
     }
 
-    writeStringToFile("testingFormat.notCpp", headerStr);
+    writeStringToFile(destFileName, headerStr);
 }
 
 void editIndentation(vector<string>& fileLines)

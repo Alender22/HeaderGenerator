@@ -28,7 +28,7 @@ int main(int argC, char** args)
 
     cout << headerStr;
 
-    formatCPPFile(filename, headerStr);
+    formatCPPFile(filename, args[2], headerStr);
 
     return 0;
 }

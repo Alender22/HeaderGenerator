@@ -4,5 +4,5 @@
 
 using namespace std;
 
-void formatCPPFile(string filename, string header);
+void formatCPPFile(string srcFilename, string destFileName, string headerStr);
 void editIndentation(vector<string>& fileLines);
