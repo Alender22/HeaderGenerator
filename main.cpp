@@ -9,10 +9,11 @@ int doFileFormatting(int argC, char** args);
 
 int main(int argC, char** args)
 {
-    string origin = "testchekingtesthow welltestthis is working now";
+    string origin = "testchekingtesthow welltestthis is working nowtest";
     string splt = "test";
 
-    vector<string> tokens = maxLineLength(origin, ' ', 10);
+    vector<string> tokens;
+    tokens.push_back(replaceSubStringWithString(origin, splt, "Function"));
 
     for(int i = 0; i < tokens.size(); i++)
     {

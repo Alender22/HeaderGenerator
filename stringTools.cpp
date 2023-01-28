@@ -128,45 +128,22 @@ string charToStr(char cha)
 
 string replaceCharWithString(string original, char tarChar, string tarSubStr)
 {
-    string convertedString = "";
-    for(int i = 0; i < original.length(); i++)
-    {
-        if(original[i] == tarChar)
-        {
-            convertedString += tarSubStr;
-        }
-        else
-        {
-            convertedString += original[i];
-        }
-    }
-    return convertedString;
+    return replaceSubStringWithString(original, charToStr(tarChar), tarSubStr);
 }
 
 string replaceSubStringWithString(string original, string signalString, string tarSubStr)
 {
     string formattedString = "";
 
-    if(original.length() >= signalString.length())
+    vector<string> tokens = splitStringAt(original, signalString);
+
+    for(int i = 0; i < tokens.size(); i++)
     {
-        for(int i = 0; original.length() >= signalString.length() + i; i++)
-        {
-            if(original.substr(i, signalString.length()) == signalString)
-            {
-                formattedString += tarSubStr;
-                i += signalString.length() - 1;
-            }
-            else
-            {
-                if(i < original.length() - signalString.length() - 1)
-                    formattedString += original[i];
-            }
-            if(i == original.length() - signalString.length())
-                formattedString += original.substr(i - 1, signalString.length() + 1);
-        }
+        formattedString += tokens[i];
+
+        if(i < tokens.size() - 1)
+            formattedString += tarSubStr;
     }
-    else
-        return original;
 
     return formattedString;
 }
