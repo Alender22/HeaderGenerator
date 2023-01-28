@@ -13,6 +13,7 @@ void formatCPPFile(string srcFilename, string destFileName, string headerStr)
     headerStr += '\n';
 
     editIndentation(fileLines);
+    insertComments(fileLines);
 
     for(int i = 0; i < fileLines.size(); i++)
     {
@@ -45,4 +46,23 @@ void editIndentation(vector<string>& fileLines)
             fileLines[i] = padRight("", ' ', floor(spaceCount / 2)) + fileLines[i];
         spaceCount = 0;
     }
+}
+
+vector<string> insertComments(vector<string> codeLines , string commentLocation)
+{
+    vector<string> commentLines = readFileLineByLine(commentLocation);
+    vector<string> commentPair;
+
+    for(int i = 0; i < codeLines.size(); i++)
+    {
+        for(int j = 0; j < commentLines.size(); j++)
+        {
+            commentPair = splitStringAt(commentLines[j], '~');
+
+            if(substringIn(codeLines[i], commentPair[0]))
+                codeLines.insert(codeLines.begin() + i, "//" + commentPair[1]);        
+        }
+    }
+
+    return codeLines;
 }
