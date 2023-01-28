@@ -2,6 +2,7 @@
 #include "headerTools.h"
 #include "terminalTools.h"
 #include "cppFormatTools.h"
+#include "colorTools.h"
 
 using namespace std;
 
@@ -20,7 +21,14 @@ int main(int argC, char** args)
         cout << "|" << tokens[i] << "|" << " length: " << tokens[i].length() << endl;
     }*/
 
-    return doFileFormatting(argC, args);
+    //cout << setBackgroundColor("  ", 255, 0, 0) << getTermWidth() << "|" << getTermHeight() << endl;
+
+    for(int r = 0; r < 255; r++)
+        for(int g = 0; g < 255; g++)
+            for(int b = 0; b < 255; b++)
+                cout << setBackgroundColor(" ", r, g, b);
+
+    //return doFileFormatting(argC, args);
 }
 
 int doFileFormatting(int argC, char** args)

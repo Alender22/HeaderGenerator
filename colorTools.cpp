@@ -33,3 +33,8 @@ string getColor(int num)
         break;
     }
 }
+
+string setBackgroundColor(string toSet, int r, int g, int b)
+{
+    return "\033[48;2;" + to_string(r) + ";" + to_string(g) + ";" + to_string(b) + "m" + toSet + "\033[0m";
+}

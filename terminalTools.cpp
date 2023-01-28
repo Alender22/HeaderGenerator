@@ -29,3 +29,19 @@ void makeSpace(int lines)
         cout << endl;
     }
 }
+
+int getTermWidth()
+{
+    struct winsize termSize;
+    ioctl(0, TIOCGWINSZ, & termSize);
+
+    return termSize.ws_col;
+}
+
+int getTermHeight()
+{
+    struct winsize termSize;
+    ioctl(0, TIOCGWINSZ, & termSize);
+
+    return termSize.ws_row;
+}
