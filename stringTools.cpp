@@ -174,13 +174,8 @@ string removeSubStrFromSt(string original, string toRemove)
 
 bool substringIn(string original, string sub)
 {
-    cout << "getting to split" << endl;
-
-    cout << "original: " << original << " ||| sub: " << sub << endl;
 
     vector<string> tokens = splitStringAt(original, sub);
-
-    cout << "inString" << endl;
 
     if(tokens.size() > 1)
         return true;
