@@ -9,7 +9,17 @@ int doFileFormatting(int argC, char** args);
 
 int main(int argC, char** args)
 {
-    return doFileFormatting(argC, args);
+    string origin = "testchekingtesthow welltestthis is working now";
+    string splt = "test";
+
+    vector<string> tokens = splitStringAt(origin, splt);
+
+    for(int i = 0; i < tokens.size(); i++)
+    {
+        cout << "|" << tokens[i] << "|" << endl;
+    }
+
+    //return doFileFormatting(argC, args);
 }
 
 int doFileFormatting(int argC, char** args)
