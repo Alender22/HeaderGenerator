@@ -48,10 +48,11 @@ void editIndentation(vector<string>& fileLines)
     }
 }
 
-vector<string> insertComments(vector<string> codeLines , string commentLocation)
+void insertComments(vector<string>& codeLines , string commentLocation)
 {
     vector<string> commentLines = readFileLineByLine(commentLocation);
     vector<string> commentPair;
+    vector<string> codeCommentLines;
 
     for(int i = 0; i < codeLines.size(); i++)
     {
@@ -59,10 +60,16 @@ vector<string> insertComments(vector<string> codeLines , string commentLocation)
         {
             commentPair = splitStringAt(commentLines[j], '~');
 
-            if(substringIn(codeLines[i], commentPair[0]))
-                codeLines.insert(codeLines.begin() + i, "//" + commentPair[1]);        
+            if(commentPair.size() == 2)
+            {
+                if(substringIn(codeLines[i], commentPair[0]))
+                {
+                    codeCommentLines.push_back("//" + commentPair[1]);
+                }
+            }
         }
+        codeCommentLines.push_back(codeLines[i]);
     }
 
-    return codeLines;
+    codeLines = codeCommentLines;
 }

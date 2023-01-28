@@ -27,10 +27,17 @@
 
 using namespace std;
 
+//testing comment insert
 vector<string> splitStringAt(string toSplit, string splitAt)
 {
   vector<string> tokens;
   string token = "";
+
+  if(toSplit.length() < splitAt.length())
+  {
+    tokens.push_back(toSplit);
+    return tokens;
+  }
 
   for(int i = 0; i < toSplit.length() - splitAt.length() + 1; i++)
   {
@@ -61,11 +68,13 @@ vector<string> splitStringAt(string toSplit, string splitAt)
   return tokens;
 }
 
+//testing comment insert
 vector<string> splitStringAt(string toSplit, char splitAt)
 {
   return splitStringAt(toSplit, charToStr(splitAt));
 }
 
+//testing comment insert
 vector<string> maxLineLength(string toBreak, char splitAt, int lineLength)
 {
   vector<string> tokens = splitStringAt(toBreak, splitAt);
@@ -126,33 +135,39 @@ string padString(string toPad, char padChar, int tarSize, bool padRight)
   return toPad;
 }
 
+//testing comment insert
 string padRight(string toPad, char padChar, int tarSize)
 {
   return padString(toPad, padChar, tarSize, true);
 }
 
+//testing comment insert
 string padLeft(string toPad, char padChar, int tarSize)
 {
   return padString(toPad, padChar, tarSize, false);
 }
 
+//testing comment insert
 string padCenter(string toPad, char padChar, int tarSize)
 {
   string padded = padLeft(toPad, padChar, tarSize - ceil((tarSize - toPad.length()) / 2));
   return padRight(padded, padChar, tarSize);
 }
 
+//testing comment insert
 string charToStr(char cha)
 {
   string str = "";
   return str += cha;
 }
 
+//testing comment insert
 string replaceCharWithString(string original, char tarChar, string tarSubStr)
 {
   return replaceSubStringWithString(original, charToStr(tarChar), tarSubStr);
 }
 
+//testing comment insert
 string replaceSubStringWithString(string original, string signalString, string tarSubStr)
 {
   string formattedString = "";
@@ -170,11 +185,13 @@ string replaceSubStringWithString(string original, string signalString, string t
   return formattedString;
 }
 
+//testing comment insert
 string removeCharFromString(string original, char toRemove)
 {
   return removeSubStrFromSt(original, charToStr(toRemove));
 }
 
+//testing comment insert
 string removeSubStrFromSt(string original, string toRemove)
 {
   vector<string> tokens = splitStringAt(original, toRemove);
@@ -188,9 +205,16 @@ string removeSubStrFromSt(string original, string toRemove)
   return withRemoved;
 }
 
+//testing comment insert
 bool substringIn(string original, string sub)
 {
+  cout << "getting to split" << endl;
+
+  cout << "original: " << original << " ||| sub: " << sub << endl;
+
   vector<string> tokens = splitStringAt(original, sub);
+
+  cout << "inString" << endl;
 
   if(tokens.size() > 1)
     return true;

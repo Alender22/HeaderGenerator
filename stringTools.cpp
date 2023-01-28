@@ -10,6 +10,12 @@ vector<string> splitStringAt(string toSplit, string splitAt)
     vector<string> tokens;
     string token = "";
 
+    if(toSplit.length() < splitAt.length())
+    {
+        tokens.push_back(toSplit);
+        return tokens;
+    }
+
     for(int i = 0; i < toSplit.length() - splitAt.length() + 1; i++)
     {
 
@@ -168,7 +174,13 @@ string removeSubStrFromSt(string original, string toRemove)
 
 bool substringIn(string original, string sub)
 {
+    cout << "getting to split" << endl;
+
+    cout << "original: " << original << " ||| sub: " << sub << endl;
+
     vector<string> tokens = splitStringAt(original, sub);
+
+    cout << "inString" << endl;
 
     if(tokens.size() > 1)
         return true;

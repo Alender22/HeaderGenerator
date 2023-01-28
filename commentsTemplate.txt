@@ -1,0 +1,13 @@
+vector<string> splitStringAt(string toSplit, string splitAt)~testing comment insert
+vector<string> splitStringAt(string toSplit, char splitAt)~testing comment insert
+vector<string> maxLineLength(string toBreak, char splitAt, int lineLength)~testing comment insert
+string padString(string toPad, char padChar, int tarSize, bool padRighttesting comment insert
+string padRight(string toPad, char padChar, int tarSize)~testing comment insert
+string padLeft(string toPad, char padChar, int tarSize)~testing comment insert
+string padCenter(string toPad, char padChar, int tarSize)~testing comment insert
+string charToStr(char cha)~testing comment insert
+string replaceCharWithString(string original, char tarChar, string tarSubStr)~testing comment insert
+string replaceSubStringWithString(string original, string signalString, string tarSubStr)~testing comment insert
+string removeCharFromString(string original, char toRemove)~testing comment insert
+string removeSubStrFromSt(string original, string toRemove)~testing comment insert
+bool substringIn(string original, string sub)~testing comment insert
