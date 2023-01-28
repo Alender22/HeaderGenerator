@@ -1,13 +1,13 @@
-vector<string> splitStringAt(string toSplit, string splitAt)~testing comment insert
-vector<string> splitStringAt(string toSplit, char splitAt)~testing comment insert
-vector<string> maxLineLength(string toBreak, char splitAt, int lineLength)~testing comment insert
-string padString(string toPad, char padChar, int tarSize, bool padRighttesting comment insert
-string padRight(string toPad, char padChar, int tarSize)~testing comment insert
-string padLeft(string toPad, char padChar, int tarSize)~testing comment insert
-string padCenter(string toPad, char padChar, int tarSize)~testing comment insert
-string charToStr(char cha)~testing comment insert
-string replaceCharWithString(string original, char tarChar, string tarSubStr)~testing comment insert
-string replaceSubStringWithString(string original, string signalString, string tarSubStr)~testing comment insert
-string removeCharFromString(string original, char toRemove)~testing comment insert
-string removeSubStrFromSt(string original, string toRemove)~testing comment insert
-bool substringIn(string original, string sub)~testing comment insert
+vector<string> splitStringAt(string toSplit, string splitAt)~Takes a string and a toSplit string, then splits the main string at every occurance of the subString
+vector<string> splitStringAt(string toSplit, char splitAt)~Splits a string at every occurance of a splitChar
+vector<string> maxLineLength(string toBreak, char splitAt, int lineLength)~Takes a string, a split char, and a length. Puts line breaks at the split char, such that the indevidual lines are less than or equal to given line lenght. Will put line breaks elsewhere if necessary
+string padString(string toPad, char padChar, int tarSize, bool padRight)~Pads a string to a certain length, with a given charachter, to either left or right
+string padRight(string toPad, char padChar, int tarSize)~Pads a string to a certain length, with a given charachter, to the right
+string padLeft(string toPad, char padChar, int tarSize)~Pads a string to a certain length, with a given charachter, to the left
+string padCenter(string toPad, char padChar, int tarSize)~Pads a string to a certain length, keeping the original string centered
+string charToStr(char cha)~Converts variables of type char to type string. Probably already in cpp...
+string replaceCharWithString(string original, char tarChar, string tarSubStr)~Replaces every instance of a given char in a string with a given substring
+string replaceSubStringWithString(string original, string signalString, string tarSubStr)~replaces every instance of a substring with a given string
+string removeCharFromString(string original, char toRemove)~removes every instance of a char from the string
+string removeSubStrFromSt(string original, string toRemove)~removes every instance of a substring from the string
+bool substringIn(string original, string sub)~returns whether or not a string contains a given substring

@@ -10,8 +10,14 @@ using namespace std;
 
 void Header::readTableFromTemplate(string templateLocation)
 {
-    Table commentTable;
     vector<string> templateLines = readFileLineByLine(templateLocation);
+
+    readTableFromString(templateLines);
+}
+
+void Header::readTableFromString(vector<string> templateLines)
+{
+    Table commentTable;
 
     vector<string> widthStrings = splitStringAt(templateLines[0], '~');
     vector<int> cellWides;
@@ -47,6 +53,13 @@ void Header::readTableFromTemplate(string templateLocation)
     }
 
     header = commentTable;
+}
+
+void Header::readTableFromString(string templateString, string lineBreak)
+{
+    vector<string> tokens = splitStringAt(templateString, lineBreak);
+
+    readTableFromString(tokens);
 }
 
 string Header::makeHeader()

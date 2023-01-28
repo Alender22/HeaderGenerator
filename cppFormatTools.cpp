@@ -4,6 +4,7 @@
 #include "fileTools.h"
 #include "stringTools.h"
 #include "cppFormatTools.h"
+#include "headerTools.h"
 
 using namespace std;
 
@@ -64,7 +65,11 @@ void insertComments(vector<string>& codeLines , string commentLocation)
             {
                 if(substringIn(codeLines[i], commentPair[0]))
                 {
-                    codeCommentLines.push_back("//" + commentPair[1]);
+                    Header commentFormatter;
+
+                    commentFormatter.readTableFromString("80\n" + commentPair[1]);
+
+                    codeCommentLines.push_back("\n\n\n" + commentFormatter.makeHeader());
                 }
             }
         }

@@ -13,6 +13,10 @@ private:
 
 public:
     void readTableFromTemplate(string templateLocation = "template.txt");
+    
+    void readTableFromString(vector<string> templateLines);
+
+    void readTableFromString(string templateString, string lineBreak = "\n");
 
     void addVarToDict(string varName, string varCont);
 
