@@ -12,11 +12,11 @@ int main(int argC, char** args)
     string origin = "testchekingtesthow welltestthis is working now";
     string splt = "test";
 
-    vector<string> tokens = splitStringAt(origin, splt);
+    vector<string> tokens = maxLineLength(origin, ' ', 10);
 
     for(int i = 0; i < tokens.size(); i++)
     {
-        cout << "|" << tokens[i] << "|" << endl;
+        cout << "|" << tokens[i] << "|" << " length: " << tokens[i].length() << endl;
     }
 
     //return doFileFormatting(argC, args);

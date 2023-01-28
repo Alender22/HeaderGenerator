@@ -52,6 +52,15 @@ vector<string> maxLineLength(string toBreak, char splitAt, int lineLength)
 
     for(int i = 0; i < tokens.size(); i++)
     {
+        if(tokens[i].length() > lineLength)
+        {
+            string tmp = tokens[i].substr(0, lineLength - part.length());
+            string rest = tokens[i].substr(lineLength - part.length());
+
+            tokens[i] = tmp;
+            tokens.insert(tokens.begin() + i + 1, rest);
+        }
+
         if(part.length() + tokens[i].length() <= lineLength)
         {
             part += tokens[i];
