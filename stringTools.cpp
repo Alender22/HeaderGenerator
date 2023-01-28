@@ -150,25 +150,28 @@ string replaceSubStringWithString(string original, string signalString, string t
 
 string removeCharFromString(string original, char toRemove)
 {
-    string cleaned;
-    for(int i = 0; i < original.length(); i++)
+    return removeSubStrFromSt(original, charToStr(toRemove));
+}
+
+string removeSubStrFromSt(string original, string toRemove)
+{
+    vector<string> tokens = splitStringAt(original, toRemove);
+    string withRemoved = "";
+
+    for(int i = 0; i < tokens.size(); i++)
     {
-        if(original[i] != toRemove)
-            cleaned += original[i];
+        withRemoved += tokens[i];
     }
-    return cleaned;
+
+    return withRemoved;
 }
 
 bool substringIn(string original, string sub)
 {
-    string check = replaceSubStringWithString(original, sub, sub + sub);
+    vector<string> tokens = splitStringAt(original, sub);
 
-    if(check.length() != original.length())
-    {  
+    if(tokens.size() > 1)
         return true;
-    }
     else
-    {
         return false;
-    }
 }

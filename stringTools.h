@@ -15,4 +15,5 @@ string charToStr(char cha);
 string replaceCharWithString(string original, char tarChar, string tarSubStr);
 string replaceSubStringWithString(string original, string signalString, string tarSubStr);
 string removeCharFromString(string original, char toRemove);
+string removeSubStrFromSt(string original, string toRemove);
 bool substringIn(string original, string sub);
