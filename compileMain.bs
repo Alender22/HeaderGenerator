@@ -1,0 +1,3 @@
+cp ../MyLibraries/cppFiles/* libraryFiles/cppFiles/
+cp ../MyLibraries/headFiles/* libraryFiles/headFiles/
+g++ -o makeHeader.bin -I ../MyLibraries/headFiles/ main.cpp ../MyLibraries/oFiles/*

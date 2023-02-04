@@ -3,6 +3,7 @@
 #include "terminalTools.h"
 #include "cppFormatTools.h"
 #include "colorTools.h"
+#include "timeTools.h"
 
 using namespace std;
 

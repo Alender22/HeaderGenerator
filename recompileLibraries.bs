@@ -1,0 +1,3 @@
+cd ../MyLibraries/
+./recompileLibraries.bs
+cd ../HeaderGenerator/
