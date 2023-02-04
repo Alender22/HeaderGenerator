@@ -1,9 +1,11 @@
 #include <iostream>
+#include <vector>
 #include "headerTools.h"
 #include "terminalTools.h"
 #include "cppFormatTools.h"
 #include "colorTools.h"
 #include "timeTools.h"
+#include "stringTools.h"
 
 using namespace std;
 
@@ -31,7 +33,9 @@ int doFileFormatting(int argC, char** args)
     else
         destFilename = args[2];
 
-    header.addVarToDict("FILENAME", srcFilename);
+    vector<string> pathString = splitStringAt(destFilename, '/');
+
+    header.addVarToDict("FILENAME", pathString[pathString.size() - 1]);
 
     header.readTableFromTemplate();
 

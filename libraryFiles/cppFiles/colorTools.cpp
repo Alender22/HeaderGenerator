@@ -6,14 +6,11 @@ using namespace std;
 string getColoredTerminalString(string toPrint, string color)
 {
     if(color == "red")
-        return setForegroundColor(toPrint, 255, 0, 0);
-        //return "\x1B[31m" + toPrint + "\033[0m";
+        return "\x1B[31m" + toPrint + "\033[0m";
     if(color == "green")
-        return setForegroundColor(toPrint, 255, 0, 0);
-        //return "\x1B[32m" + toPrint + "\033[0m";
+        return "\x1B[32m" + toPrint + "\033[0m";
     if(color == "blue")
-        return setForegroundColor(toPrint, 255, 0, 0);
-        //return "\x1B[34m" + toPrint + "\033[0m";
+        return "\x1B[34m" + toPrint + "\033[0m";
     else
         return toPrint;
 }
