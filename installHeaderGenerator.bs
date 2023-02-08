@@ -1,0 +1,3 @@
+./recompileLibraries.bs
+./compileMain.bs
+cp makeHeader.bin /bin/
