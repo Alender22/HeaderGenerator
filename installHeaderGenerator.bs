@@ -2,4 +2,4 @@
 ./compileMain.bs
 
 cp makeHeader.bin /$HOME/.local/bin/makeHeader
-cp template.txt /$HOME/.local/bin/makeHeaderTemplateDefault.txt
+cp Templates/template.txt /$HOME/.local/bin/makeHeaderTemplateDefault.txt
