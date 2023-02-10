@@ -37,7 +37,8 @@ int doFileFormatting(int argC, char** args)
 
     header.addVarToDict("FILENAME", pathString[pathString.size() - 1]);
 
-    header.readTableFromTemplate();
+    //header.readTableFromTemplate("~/.local/bin/makeHeaderTemplateDefault.txt");
+    header.readTableFromTemplate("/home/lucas/.local/bin/makeHeaderTemplateDefault.txt");
 
     header.handleFlagCommands();
 
