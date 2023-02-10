@@ -3,11 +3,16 @@
 
 using namespace std;
 
+//All of these functions use ANSI escape codes
+
+
+//Places the cursor at a given coordinate in the terminal
 void placeCursorAt(int i, int j)
 {
     cout << "\033[" + to_string(i) + ";" + to_string(j) + "f";
 }
 
+//clears the current contents of the terminal
 void clearTerminal()
 {
     struct winsize termSize;
@@ -22,6 +27,7 @@ void clearTerminal()
     placeCursorAt(1, 1);
 }
 
+//Makes space by printing newlines to terminal, depricated
 void makeSpace(int lines)
 {
     for(int i = 0; i < lines; i++)
@@ -30,6 +36,7 @@ void makeSpace(int lines)
     }
 }
 
+//Returns current width of terminal, in charachters
 int getTermWidth()
 {
     struct winsize termSize;
@@ -38,6 +45,7 @@ int getTermWidth()
     return termSize.ws_col;
 }
 
+//Returns current height of terminal in lines
 int getTermHeight()
 {
     struct winsize termSize;

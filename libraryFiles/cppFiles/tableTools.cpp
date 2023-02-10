@@ -8,11 +8,13 @@
 
 using namespace std;
 
+//Returns the current width, in carachters, of the table. Includes border charachters
 int Table::calcTableWidth()
 {
     return sumOfWidthsVector() + sumOfMarginsWidth() + numSepChars();
 }
 
+//Sums all of the widts of the cells, which are stored in the cell widths vector
 int Table::sumOfWidthsVector()
 {
     int sumWidths = 0;
@@ -25,16 +27,19 @@ int Table::sumOfWidthsVector()
     return sumWidths;
 }
 
+//Sums the widths of the cells
 int Table::sumOfMarginsWidth()
 {
     return cellWidths.size() * margins * 2;
 }
 
+//Returns the number of border charachters in a single line
 int Table::numSepChars()
 {
     return cellWidths.size() + 1;
 }
 
+//This generates the seperator between different rows in the table
 string Table::generateRowSep()
 {
     string rowSepStr = charToStr(outBorder);
@@ -42,6 +47,7 @@ string Table::generateRowSep()
     return rowSepStr + charToStr(outBorder) + "\n";
 }
 
+//Generates an empty table line as a margin between the cell edge and contents
 string Table::generateRowBuffer()
 {
     string rowBuffer = charToStr(outBorder) + padRight("", ' ', margins);
@@ -56,11 +62,13 @@ string Table::generateRowBuffer()
     return rowBuffer + padRight("", ' ', margins) + charToStr(outBorder) + "\n";
 }
 
+//Adds the seperator between collumns to the string
 string Table::generateColSep()
 {
     return padCenter(charToStr(colSep), ' ', 1 + 2 * margins);
 }
 
+//generates the string which contains all of the contents for this row
 string Table::generateRowCellContents(int row)
 {
     vector<vector<vector<string>>> linesTable = generateLinesTable();
@@ -77,6 +85,7 @@ string Table::generateRowCellContents(int row)
     return rowContents;
 }
 
+//finds how many line breaks the cell which needs the most line breaks needs.
 int Table::getDeepestCellInRow(vector<vector<vector<string>>>& linesTable, int row)
 {
     int deepest = 0;
@@ -90,6 +99,7 @@ int Table::getDeepestCellInRow(vector<vector<vector<string>>>& linesTable, int r
     return deepest;
 }
 
+//
 string Table::generateContentsLine(vector<vector<string>> lineContents, int lin, int row)
 {
     string completedLine = charToStr(outBorder) + padRight("", ' ', margins);

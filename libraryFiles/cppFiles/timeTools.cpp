@@ -6,6 +6,8 @@
 
 using namespace std;
 
+//Returns the current date in the format of (yyyy/mm/dd)
+//  should be split up into smaller functions, for year, month and day each
 string getDate_YYYY_MM_DD_Format()
 {
     time_t currTime;
@@ -23,6 +25,8 @@ string getDate_YYYY_MM_DD_Format()
     return retString;
 }
 
+//Converts a given months name abbreviation 
+//  into a two digit representation of that month
 string getMonthNumber(string monthAbb)
 {
     if(monthAbb == "Jan")
@@ -49,5 +53,9 @@ string getMonthNumber(string monthAbb)
         return "11";
     if(monthAbb == "Dec")
         return "12";
-    return "Month abbreviation " + monthAbb + " was not recognized\n";
+
+    //If the passed abbreviation was not recognized, print error to terminal
+    //  and return null
+    cout << "Month abbreviation " + monthAbb + " was not recognized" << endl;
+    return NULL;
 }

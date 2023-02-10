@@ -5,6 +5,10 @@
 
 using namespace std;
 
+//Takes two strings. A main, and a target substring.
+//  Returns a vector of all of the substrings of the main,
+//  split at the target string. Very similar functionality 
+//  to python split()
 vector<string> splitStringAt(string toSplit, string splitAt)
 {
     vector<string> tokens;
@@ -45,11 +49,16 @@ vector<string> splitStringAt(string toSplit, string splitAt)
     return tokens;
 }
 
+//Does the same as the function above, accepting a target char instead of a targe substring
 vector<string> splitStringAt(string toSplit, char splitAt)
 {
     return splitStringAt(toSplit, charToStr(splitAt));
 }
 
+//Takes a string, a preffered split charachter, and a wanted max line length.
+//  will add line breaks such that no single element of the returned vector
+//  has a length greator than given line length. Will force line breaks if 
+//  preffered split charachter is not frequent enough.
 vector<string> maxLineLength(string toBreak, char splitAt, int lineLength)
 {
     vector<string> tokens = splitStringAt(toBreak, splitAt);
@@ -93,6 +102,7 @@ vector<string> maxLineLength(string toBreak, char splitAt, int lineLength)
     return parts;
 }
 
+//Pads a string with a given charachter to the specified length
 string padString(string toPad, char padChar, int tarSize, bool padRight)
 {
     if(tarSize <= 0)
@@ -126,17 +136,20 @@ string padCenter(string toPad, char padChar, int tarSize)
     return padRight(padded, padChar, tarSize);
 }
 
+//converts a variable type char to type string
 string charToStr(char cha)
 {
     string str = "";
     return str += cha;
 }
 
+//Replaces every instance of a given char in a string with a given replacement string
 string replaceCharWithString(string original, char tarChar, string tarSubStr)
 {
     return replaceSubStringWithString(original, charToStr(tarChar), tarSubStr);
 }
 
+//Replaces every instance of a substring in the main string with a specified string
 string replaceSubStringWithString(string original, string signalString, string tarSubStr)
 {
     string formattedString = "";
@@ -154,11 +167,13 @@ string replaceSubStringWithString(string original, string signalString, string t
     return formattedString;
 }
 
+//Removes every instance of a given charachter from a string
 string removeCharFromString(string original, char toRemove)
 {
     return removeSubStrFromSt(original, charToStr(toRemove));
 }
 
+//Removes every instance of a given substring from the main string
 string removeSubStrFromSt(string original, string toRemove)
 {
     vector<string> tokens = splitStringAt(original, toRemove);
@@ -172,6 +187,7 @@ string removeSubStrFromSt(string original, string toRemove)
     return withRemoved;
 }
 
+//returns wheter or not a specific substring is contained in the main string.
 bool substringIn(string original, string sub)
 {
 
