@@ -3,7 +3,7 @@
 
 using namespace std;
 
-//This function takes a given string and color, and brackets s
+//This function takes a given string and color, and brackets 
 //  the string with the ANSI escape codes to print the string
 //  to terminal in that color. 
 string getColoredTerminalString(string toPrint, string color)
