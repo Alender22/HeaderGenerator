@@ -134,7 +134,7 @@ commandDict readCommands(int argC, char** args)
             dict.keys.push_back("destFileName");
             dict.contents.push_back(args[i + 1]);
         }
-        if(arg == "--use-given-template")
+        if(arg == "--use-given-template" || arg == "-t")
         {
             dict.keys.push_back("userTemplate");
             dict.contents.push_back(args[i + 1]);
