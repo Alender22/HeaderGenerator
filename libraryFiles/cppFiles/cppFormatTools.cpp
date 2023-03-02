@@ -51,7 +51,8 @@ void editIndentation(vector<string>& fileLines)
 
 void insertComments(vector<string>& codeLines , string commentLocation)
 {
-    vector<string> commentLines = readFileLineByLine(commentLocation);
+    string commentString = readFileToString(commentLocation);
+    vector<string> commentLines = splitStringAt(commentString, "#funcDec:");
     vector<string> commentPair;
     vector<string> codeCommentLines;
 
@@ -59,15 +60,26 @@ void insertComments(vector<string>& codeLines , string commentLocation)
     {
         for(int j = 0; j < commentLines.size(); j++)
         {
-            commentPair = splitStringAt(commentLines[j], '~');
+            commentPair = splitStringAt(commentLines[j], '\n');
 
-            if(commentPair.size() == 2)
+            if(commentPair.size() > 1)
             {
                 if(substringIn(codeLines[i], commentPair[0]))
                 {
+                    string commentBlockLines = "";
                     Header commentFormatter;
 
-                    commentFormatter.readTableFromString("80\n" + commentPair[1]);
+                    for(int k = 1; k < commentPair.size(); k++)
+                    {
+                        if(commentPair[k] != "")
+                        {
+                            if(commentBlockLines != "")
+                                commentBlockLines += '\n';
+                            commentBlockLines += commentPair[k];
+                        }
+                    }
+
+                    commentFormatter.readTableFromString(commentBlockLines);
 
                     codeCommentLines.push_back("\n\n\n" + commentFormatter.makeHeader());
                 }

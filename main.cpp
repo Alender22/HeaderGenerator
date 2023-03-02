@@ -20,6 +20,7 @@ struct commandDict
 
 int runCommands(int argC, char** args);
 int doFileFormatting(string inFileName, string outFileName = "-1NoArg", string templateLocation = DEFAULT_LOCATION);
+int doCommentFormatting(string outFileName, string commentTemplateLocation);
 commandDict readCommands(int argC, char** args);
 
 int main(int argC, char** args)
@@ -38,6 +39,8 @@ int runCommands(int argC, char** args)
     commandDict commands = readCommands(argC, args);
     string templateLocation = DEFAULT_LOCATION;
     string inFileName = "", outFileName;
+    string commentTemplateLocation = "";
+    bool insertComments = false;
 
     for(int i = 0; i < commands.keys.size(); i++)
     {
@@ -79,11 +82,18 @@ int runCommands(int argC, char** args)
 
             return 2;
         }
+        if(commands.keys[i] == "readCommentsTemplate")
+        {
+            insertComments = true;
+            commentTemplateLocation = commands.contents[i];
+        }
     }
 
     if(inFileName != "")
         doFileFormatting(inFileName, outFileName, templateLocation);
 
+    if(insertComments)
+        doCommentFormatting(outFileName, commentTemplateLocation);
     return 0;
 }
 
@@ -102,7 +112,6 @@ int doFileFormatting(string inFileName, string outFileName, string templateLocat
 
     header.addVarToDict("FILENAME", pathString[pathString.size() - 1]);
 
-    //header.readTableFromTemplate("~/.local/bin/makeHeaderTemplateDefault.txt");
     header.readTableFromTemplate(templateLocation);
 
     header.handleFlagCommands();
@@ -114,6 +123,23 @@ int doFileFormatting(string inFileName, string outFileName, string templateLocat
     formatCPPFile(srcFilename, destFilename, headerStr);
 
     cout << srcFilename << " | " << destFilename << endl;
+
+    return 0;
+}
+
+int doCommentFormatting(string codeFileName, string commentTemplateLocation)
+{
+    vector<string> codeLines = readFileLineByLine(codeFileName);
+    insertComments(codeLines, commentTemplateLocation);
+    string newFileString = "";
+    
+    for(int i = 0; i < codeLines.size(); i++)
+    {
+        newFileString += codeLines[i] + '\n';
+        cout << codeLines[i] << endl;
+    }
+
+    writeStringToFile(codeFileName, newFileString);
 
     return 0;
 }
@@ -148,6 +174,11 @@ commandDict readCommands(int argC, char** args)
         {
             dict.keys.push_back("readDefaultTemplate");
             dict.contents.push_back("");
+        }
+        if(arg == "--use-comments-template" || arg == "-c")
+        {
+            dict.keys.push_back("readCommentsTemplate");
+            dict.contents.push_back(args[i + 1]);
         }
     }
 
