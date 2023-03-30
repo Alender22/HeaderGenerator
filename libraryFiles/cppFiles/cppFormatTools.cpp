@@ -55,15 +55,18 @@ void insertComments(vector<string>& codeLines , string commentLocation)
     vector<string> commentLines = splitStringAt(commentString, "#funcDec:");
     vector<string> commentPair;
     vector<string> codeCommentLines;
+    string templateBuffer = "";
 
     for(int i = 0; i < codeLines.size(); i++)
     {
+
         for(int j = 0; j < commentLines.size(); j++)
         {
             commentPair = splitStringAt(commentLines[j], '\n');
 
             if(commentPair.size() > 1)
             {
+
                 if(substringIn(codeLines[i], commentPair[0]))
                 {
                     string commentBlockLines = "";
@@ -81,11 +84,21 @@ void insertComments(vector<string>& codeLines , string commentLocation)
 
                     commentFormatter.readTableFromString(commentBlockLines);
 
-                    codeCommentLines.push_back("\n\n\n" + commentFormatter.makeHeader());
+                    codeCommentLines.push_back("\n" + commentFormatter.makeHeader());
                 }
             }
         }
-        codeCommentLines.push_back(codeLines[i]);
+
+        if(substringIn(codeLines[i], "template"))
+        {
+            templateBuffer = codeLines[i];
+        }
+        else
+        {
+            codeCommentLines.push_back(templateBuffer + codeLines[i]);
+            templateBuffer = "";
+        }
+        
     }
 
     codeLines = codeCommentLines;

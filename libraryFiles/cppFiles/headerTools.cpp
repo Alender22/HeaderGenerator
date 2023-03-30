@@ -67,7 +67,7 @@ string Header::makeHeader()
     string borderEnd = padRight("", header.getOutBorder(), header.getTableCharWidth() - 1);
     string borderBuffer = padRight(charToStr(header.getOutBorder()), ' ', header.getTableCharWidth() - 1) + header.getOutBorder() +"\n";
 
-    return "/" + borderEnd + "\n" + borderBuffer + header.getFullTable() + borderBuffer + borderEnd + "/" + "\n" ;
+    return "/" + borderEnd + "\n" + borderBuffer + header.getFullTable() + borderBuffer + borderEnd + "/";
 }
 
 void Header::handleFlagCommands()
