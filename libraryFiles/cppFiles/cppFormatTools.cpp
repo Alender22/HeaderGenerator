@@ -51,27 +51,30 @@ void editIndentation(vector<string>& fileLines)
 
 void insertComments(vector<string>& codeLines , string commentLocation)
 {
+    cout << "inserting comments:" << endl;
     string commentString = readFileToString(commentLocation);
     vector<string> commentLines = splitStringAt(commentString, "#funcDec:");
     vector<string> commentPair;
     vector<string> codeCommentLines;
     string templateBuffer = "";
 
+    cout << "1" << endl;
     for(int i = 0; i < codeLines.size(); i++)
     {
-
+        cout << "2" << endl;
         for(int j = 0; j < commentLines.size(); j++)
         {
             commentPair = splitStringAt(commentLines[j], '\n');
-
-            if(commentPair.size() > 1)
+            cout << "3" << endl;
+            if(commentPair.size() > 1 && commentPair[0] != "")
             {
-
+                cout << "4" << endl;
+                cout << "codeLine: |" << codeLines[i] << "| comment pair: |" << commentPair[0] << "|" << endl; 
                 if(substringIn(codeLines[i], commentPair[0]))
                 {
                     string commentBlockLines = "";
                     Header commentFormatter;
-
+                    cout << "5" << endl;
                     for(int k = 1; k < commentPair.size(); k++)
                     {
                         if(commentPair[k] != "")
@@ -88,7 +91,7 @@ void insertComments(vector<string>& codeLines , string commentLocation)
                 }
             }
         }
-
+        cout << "6" << endl;
         if(substringIn(codeLines[i], "template"))
         {
             templateBuffer = codeLines[i];
@@ -100,6 +103,8 @@ void insertComments(vector<string>& codeLines , string commentLocation)
         }
         
     }
+
+    cout << "7" << endl;
 
     codeLines = codeCommentLines;
 }

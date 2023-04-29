@@ -190,8 +190,10 @@ string removeSubStrFromSt(string original, string toRemove)
 //returns wheter or not a specific substring is contained in the main string.
 bool substringIn(string original, string sub)
 {
-
+    cout << "01" << endl;
+    cout << "original: |" << original << "| |sub: |" << sub << "|" << endl;
     vector<string> tokens = splitStringAt(original, sub);
+    cout << "o2" << endl;
 
     if(tokens.size() > 1)
         return true;

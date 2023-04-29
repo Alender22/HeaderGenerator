@@ -1,5 +1,5 @@
 ./recompileLibraries.bs
 ./compileMain.bs
 
-cp ../makeHeader.bin /$HOME/.local/bin/makeHeader
-cp ../Templates/template.txt /$HOME/.local/bin/makeHeaderTemplateDefault.txt
+sudo install ../makeHeader /usr/bin
+#cp ../Templates/template.txt /$HOME/.local/bin/makeHeaderTemplateDefault.txt
